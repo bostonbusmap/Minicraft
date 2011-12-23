@@ -1,4 +1,4 @@
-package java.awt.image;
+package fakejava.awt.image;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;

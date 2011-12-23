@@ -1,4 +1,4 @@
-package java.awt;
+package fakejava.awt;
 
 public class Dimension {
 	private final int width;

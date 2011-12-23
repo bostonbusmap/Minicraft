@@ -1,6 +1,6 @@
-package java.awt.image;
+package fakejava.awt.image;
 
-import java.awt.Graphics;
+import fakejava.awt.Graphics;
 
 import android.graphics.Canvas;
 

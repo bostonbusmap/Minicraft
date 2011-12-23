@@ -1,8 +1,9 @@
-package java.awt;
+package fakejava.awt;
 
-import java.awt.image.BufferStrategy;
 
 import com.schneeloch.other.GameView;
+
+import fakejava.awt.image.BufferStrategy;
 
 public class Canvas {
 	private GameView gameView;

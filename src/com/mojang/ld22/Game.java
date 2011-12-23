@@ -1,17 +1,7 @@
 package com.mojang.ld22;
 
-import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
 import java.io.IOException;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 
 import android.content.Context;
 import android.util.Log;
@@ -29,6 +19,14 @@ import com.mojang.ld22.screen.Menu;
 import com.mojang.ld22.screen.TitleMenu;
 import com.mojang.ld22.screen.WonMenu;
 import com.schneeloch.other.GameActivity;
+
+import fakejava.awt.BorderLayout;
+import fakejava.awt.Canvas;
+import fakejava.awt.Dimension;
+import fakejava.awt.Graphics;
+import fakejava.awt.image.BufferStrategy;
+import fakejava.awt.image.BufferedImage;
+import fakejava.awt.image.DataBufferInt;
 
 public class Game extends Canvas {
 	private static final long serialVersionUID = 1L;
@@ -120,12 +118,8 @@ public class Game extends Canvas {
 				}
 			}
 		}
-		try {
-			screen = new Screen(WIDTH, HEIGHT, new SpriteSheet(ImageIO.read(activity.getResources().openRawResource(R.raw.icons))));
-			lightScreen = new Screen(WIDTH, HEIGHT, new SpriteSheet(ImageIO.read(activity.getResources().openRawResource(R.raw.icons))));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet(activity.getResources().openRawResource(R.raw.icons)));
+		lightScreen = new Screen(WIDTH, HEIGHT, new SpriteSheet(activity.getResources().openRawResource(R.raw.icons)));
 
 		resetGame();
 		setMenu(new TitleMenu());

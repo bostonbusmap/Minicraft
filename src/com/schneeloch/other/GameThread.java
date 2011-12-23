@@ -1,12 +1,11 @@
 package com.schneeloch.other;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
 
 import com.mojang.ld22.Game;
 import com.mojang.ld22.InputHandler;
+
+import fakejava.awt.BorderLayout;
+import fakejava.awt.Dimension;
 
 import android.content.Context;
 import android.graphics.Canvas;

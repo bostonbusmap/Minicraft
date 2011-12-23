@@ -1,4 +1,4 @@
-package java.awt;
+package fakejava.awt;
 
 public class BorderLayout {
 

@@ -1,4 +1,4 @@
-package java.awt.image;
+package fakejava.awt.image;
 
 public class WritableRaster {
 	private final BufferedImage image;

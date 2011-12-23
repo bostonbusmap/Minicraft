@@ -1,9 +1,10 @@
 package com.mojang.ld22.level.levelgen;
 
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import com.mojang.ld22.level.tile.Tile;
+
+import fakejava.awt.image.BufferedImage;
 
 public class LevelGen {
 	private static final Random random = new Random();
