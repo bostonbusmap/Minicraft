@@ -18,19 +18,9 @@ public class Canvas {
 		return true;
 	}
 	
-	protected int getWidth()
-	{
-		
-	}
-	
-	protected int getHeight()
-	{
-		
-	}
-	
 	protected BufferStrategy getBufferStrategy()
 	{
-		
+		return new BufferStrategy();
 	}
 	
 	protected BufferStrategy createBufferStrategy(int x)

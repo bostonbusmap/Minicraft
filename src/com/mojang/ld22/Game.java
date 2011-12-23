@@ -271,12 +271,12 @@ public class Game extends Canvas {
 		}
 
 		Graphics g = bs.getDrawGraphics(canvas);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
 		int ww = WIDTH * SCALE;
 		int hh = HEIGHT * SCALE;
-		int xo = (getWidth() - ww) / 2;
-		int yo = (getHeight() - hh) / 2;
+		int xo = (canvas.getWidth() - ww) / 2;
+		int yo = (canvas.getHeight() - hh) / 2;
 		g.drawImage(image, xo, yo, ww, hh, null);
 		g.dispose();
 		bs.show();

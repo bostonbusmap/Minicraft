@@ -1,36 +1,37 @@
 package com.mojang.ld22.sound;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
+import com.mojang.ld22.R;
+
+import android.content.Context;
+import android.media.MediaPlayer;
 
 public class Sound {
-	public static final Sound playerHurt = new Sound("/playerhurt.wav");
-	public static final Sound playerDeath = new Sound("/death.wav");
-	public static final Sound monsterHurt = new Sound("/monsterhurt.wav");
-	public static final Sound test = new Sound("/test.wav");
-	public static final Sound pickup = new Sound("/pickup.wav");
-	public static final Sound bossdeath = new Sound("/bossdeath.wav");
-	public static final Sound craft = new Sound("/craft.wav");
+	public static Sound playerHurt;
+	public static Sound playerDeath;
+	public static Sound monsterHurt;
+	public static Sound test;
+	public static Sound pickup;
+	public static Sound bossdeath;
+	public static Sound craft;
 
-	private AudioClip clip;
+	public static void initSounds(Context context)
+	{
+		playerHurt = new Sound(context, R.raw.playerhurt);
+		playerDeath = new Sound(context, R.raw.death);
+		monsterHurt = new Sound(context, R.raw.monsterhurt);
+		test = new Sound(context, R.raw.test);
+		pickup = new Sound(context, R.raw.pickup);
+		bossdeath = new Sound(context, R.raw.bossdeath);
+		craft = new Sound(context, R.raw.craft);
+	}
+	
+	private MediaPlayer clip;
 
-	private Sound(String name) {
-		try {
-			clip = Applet.newAudioClip(Sound.class.getResource(name));
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+	private Sound(Context context, int resource) {
+		clip = MediaPlayer.create(context, resource);
 	}
 
 	public void play() {
-		try {
-			new Thread() {
-				public void run() {
-					clip.play();
-				}
-			}.start();
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		clip.start();
 	}
 }
