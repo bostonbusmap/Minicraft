@@ -27,7 +27,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback
 			}
 		});
 		
-		setFocusable(true);
+		//setFocusable(true);
 	}
 
 	public GameThread getThread()

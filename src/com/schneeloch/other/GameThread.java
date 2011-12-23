@@ -81,6 +81,7 @@ public class GameThread extends Thread {
 		inputHandler = game.getInputHandler();
 		
 		game.startRun(context);
+		doStart();
 		while (run)
 		{
 			Canvas canvas = null;

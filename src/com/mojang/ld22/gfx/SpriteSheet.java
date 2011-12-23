@@ -15,6 +15,7 @@ public class SpriteSheet {
 		Bitmap image = BitmapFactory.decodeStream(stream);
 		width = image.getWidth();
 		height = image.getHeight();
+		pixels = new int[width * height];
 		image.getPixels(pixels, 0, width, 0, 0, width, height);
 
 		for (int i = 0; i < pixels.length; i++) {
