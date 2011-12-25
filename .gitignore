@@ -6,4 +6,4 @@
 *.class
 gen
 bin
-
+local.properties
