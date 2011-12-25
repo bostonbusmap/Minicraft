@@ -18,6 +18,7 @@ import com.mojang.ld22.screen.LevelTransitionMenu;
 import com.mojang.ld22.screen.Menu;
 import com.mojang.ld22.screen.TitleMenu;
 import com.mojang.ld22.screen.WonMenu;
+import com.mojang.ld22.sound.Sound;
 import com.schneeloch.other.GameActivity;
 
 import fakejava.awt.BorderLayout;
@@ -34,10 +35,11 @@ public class Game extends Canvas {
 	public static final String NAME = "Minicraft";
 	public static final int HEIGHT = 120;
 	public static final int WIDTH = 160;
-	private static final int SCALE = 2;
+	private static final int SCALE = 3;
 
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+	//private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+	private final int[] pixels = new int[WIDTH * HEIGHT];
 	private boolean running = false;
 	private Screen screen;
 	private Screen lightScreen;
@@ -140,6 +142,7 @@ public class Game extends Canvas {
 		ticks = 0;
 		lastTimer1 = System.currentTimeMillis();
 
+		Sound.initSounds(activity);
 		init(activity);
 	}
 	
@@ -257,20 +260,22 @@ public class Game extends Canvas {
 
 		if (!hasFocus()) renderFocusNagger();
 
+		image.getPixels(pixels);
 		for (int y = 0; y < screen.h; y++) {
 			for (int x = 0; x < screen.w; x++) {
 				int cc = screen.pixels[x + y * screen.w];
 				if (cc < 255) pixels[x + y * WIDTH] = colors[cc];
 			}
 		}
-
+		image.setPixels(pixels);
 		Graphics g = bs.getDrawGraphics(canvas);
 		g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-		int ww = WIDTH * SCALE;
-		int hh = HEIGHT * SCALE;
-		int xo = (canvas.getWidth() - ww) / 2;
-		int yo = (canvas.getHeight() - hh) / 2;
+		int ww = WIDTH * 3;
+		int hh = HEIGHT * 3;
+		//TODO: replace with getWidth and getHeight
+		int xo = ((WIDTH * 3) - ww) / 2;
+		int yo = ((HEIGHT * 3) - hh) / 2;
 		g.drawImage(image, xo, yo, ww, hh, null);
 		g.dispose();
 		bs.show();

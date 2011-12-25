@@ -8,7 +8,7 @@ public class BufferedImage {
 	private final Bitmap bitmap;
 	
 	public BufferedImage(int width, int height, int typeIntRgb) {
-		bitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
+		bitmap = Bitmap.createBitmap(width, height, Config.RGB_565);
 	}
 
 	public BufferedImage(Bitmap bitmap) {
@@ -32,14 +32,22 @@ public class BufferedImage {
 		return bitmap.getHeight();
 	}
 
-	public int[] getRGB(int i, int j, int width, int height, Object object,
+	/*public int[] getRGB(int i, int j, int width, int height, Object object,
 			int k, int width2) {
 		return getData();
+	}*/
+
+	public Bitmap getBitmap()
+	{
+		return bitmap;
 	}
 
-	public int[] getData() {
-		int[] pixels = new int[bitmap.getWidth() * bitmap.getHeight()];
+	public void getPixels(int[] pixels) {
 		bitmap.getPixels(pixels, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
-		return pixels;
 	}
+
+	public void setPixels(int[] pixels) {
+		bitmap.setPixels(pixels, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+	}
+	
 }

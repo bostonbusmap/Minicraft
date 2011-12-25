@@ -7,8 +7,8 @@ public class DataBufferInt extends DataBuffer
 		raster = writableRaster;
 	}
 
-	public int[] getData() {
+	/*public int[] getData() {
 		return raster.getData();
-	}
+	}*/
 
 }

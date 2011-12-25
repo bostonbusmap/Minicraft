@@ -11,8 +11,8 @@ public class WritableRaster {
 		return new DataBufferInt(this);
 	}
 
-	public int[] getData() {
+	/*public int[] getData() {
 		return image.getData();
-	}
+	}*/
 
 }

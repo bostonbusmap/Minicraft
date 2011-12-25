@@ -9,6 +9,8 @@ import fakejava.awt.Dimension;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -82,6 +84,8 @@ public class GameThread extends Thread {
 		
 		game.startRun(context);
 		doStart();
+		Paint paint = new Paint();
+		paint.setColor(Color.WHITE);
 		while (run)
 		{
 			Canvas canvas = null;
@@ -93,7 +97,7 @@ public class GameThread extends Thread {
 					{
 						// update game state here
 						game.iterate(context, canvas);
-						//game.doDraw(canvas);
+						
 					}
 				}
 				
