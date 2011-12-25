@@ -35,7 +35,6 @@ public class Game extends Canvas {
 	public static final String NAME = "Minicraft";
 	public static final int HEIGHT = 120;
 	public static final int WIDTH = 160;
-	private static final int SCALE = 3;
 
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	//private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -271,11 +270,11 @@ public class Game extends Canvas {
 		Graphics g = bs.getDrawGraphics(canvas);
 		g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-		int ww = WIDTH * 3;
-		int hh = HEIGHT * 3;
+		int ww = canvas.getWidth();
+		int hh = canvas.getWidth() * HEIGHT / WIDTH;
 		//TODO: replace with getWidth and getHeight
-		int xo = ((WIDTH * 3) - ww) / 2;
-		int yo = ((HEIGHT * 3) - hh) / 2;
+		int xo = 0;
+		int yo = 0;
 		g.drawImage(image, xo, yo, ww, hh, null);
 		g.dispose();
 		bs.show();
