@@ -10,9 +10,11 @@ import fakejava.awt.Dimension;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 
@@ -59,48 +61,35 @@ public class GameActivity extends Activity  {
 		attack = (Button)findViewById(R.id.buttonAttack);
 		menu = (Button)findViewById(R.id.buttonMenu);
 		
-		up.setOnTouchListener(new OnTouchListener() {
+		setUpButtonListeners(up, InputHandler.UP);
+		setUpButtonListeners(down, InputHandler.DOWN);
+		setUpButtonListeners(left, InputHandler.LEFT);
+		setUpButtonListeners(right, InputHandler.RIGHT);
+		setUpButtonListeners(attack, InputHandler.ATTACK);
+		setUpButtonListeners(menu, InputHandler.MENU);
+	}
+	
+	private void setUpButtonListeners(Button button, final int code) {
+		button.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				gameThread.getInputHandler().keyEvent(InputHandler.UP, event.getAction() == MotionEvent.ACTION_DOWN);
-				return true;
+				doPress(code, event.getAction() == MotionEvent.ACTION_DOWN);
+				return false;
 			}
 		});
-		down.setOnTouchListener(new OnTouchListener() {
+		button.setOnKeyListener(new OnKeyListener() {
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				gameThread.getInputHandler().keyEvent(InputHandler.DOWN, event.getAction() == MotionEvent.ACTION_DOWN);
-				return true;
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				doPress(code, event.getAction() == KeyEvent.ACTION_DOWN);
+				return false;
 			}
 		});
-		left.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				gameThread.getInputHandler().keyEvent(InputHandler.LEFT, event.getAction() == MotionEvent.ACTION_DOWN);
-				return true;
-			}
-		});
-		right.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				gameThread.getInputHandler().keyEvent(InputHandler.RIGHT, event.getAction() == MotionEvent.ACTION_DOWN);
-				return true;
-			}
-		});
-		attack.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				gameThread.getInputHandler().keyEvent(InputHandler.ATTACK, event.getAction() == MotionEvent.ACTION_DOWN);
-				return true;
-			}
-		});
-		menu.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				gameThread.getInputHandler().keyEvent(InputHandler.MENU, event.getAction() == MotionEvent.ACTION_DOWN);
-				return true;
-			}
-		});
+		
+	}
+
+	private void doPress(int code, boolean isDown)
+	{
+		gameThread.getInputHandler().keyEvent(code, isDown);		
 	}
 	
 	@Override
