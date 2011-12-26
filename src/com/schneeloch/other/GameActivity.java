@@ -85,7 +85,6 @@ public class GameActivity extends Activity  {
 
 	private void doPress(int code, boolean isDown)
 	{
-		Log.i("Minicraft", "keyevent " + code + " is " + isDown);
 		gameThread.getInputHandler().keyEvent(code, isDown);		
 	}
 	

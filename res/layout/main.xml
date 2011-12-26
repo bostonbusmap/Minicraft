@@ -3,12 +3,14 @@
     android:id="@+id/FrameLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+
     <com.schneeloch.other.GameView
         android:id="@+id/surface"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal" />
-    
+        android:layout_gravity="center_horizontal"
+       />
+
     <RelativeLayout
         android:id="@+id/gridLayout1"
         android:layout_width="fill_parent"
@@ -16,17 +18,18 @@
 
         <Button
             android:id="@+id/buttonRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginRight="20sp"
             android:focusable="false"
             android:text="@string/right" />
 
         <Button
             android:id="@+id/buttonLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
             android:layout_alignBaseline="@+id/buttonRight"
             android:layout_alignBottom="@+id/buttonRight"
             android:layout_toLeftOf="@+id/buttonRight"
@@ -34,42 +37,41 @@
             android:text="@string/left" />
 
         <Button
+            android:id="@+id/buttonMenu"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:focusable="false"
+            android:text="@string/menu" />
+
+        <Button
+            android:id="@+id/buttonAttack"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:focusable="false"
+            android:text="@string/attack" />
+
+        <Button
             android:id="@+id/buttonDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:layout_alignRight="@+id/buttonRight"
             android:layout_below="@+id/buttonRight"
-            android:layout_marginRight="19dp"
+            android:layout_marginRight="29dp"
             android:focusable="false"
             android:text="@string/down" />
 
         <Button
             android:id="@+id/buttonUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
             android:layout_above="@+id/buttonRight"
             android:layout_alignLeft="@+id/buttonDown"
             android:focusable="false"
             android:text="@string/up" />
-
-        <Button
-            android:id="@+id/buttonAttack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/buttonUp"
-            android:focusable="false"
-            android:text="@string/attack" />
-
-        <Button
-            android:id="@+id/buttonMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/buttonUp"
-            android:focusable="false"
-            android:text="@string/menu" />
-
     </RelativeLayout>
 
 </FrameLayout>
