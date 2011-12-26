@@ -10,6 +10,7 @@ import fakejava.awt.Dimension;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -73,22 +74,18 @@ public class GameActivity extends Activity  {
 		button.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				doPress(code, event.getAction() == MotionEvent.ACTION_DOWN);
+				if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					doPress(code, event.getAction() == MotionEvent.ACTION_DOWN);
+				}
 				return false;
 			}
 		});
-		button.setOnKeyListener(new OnKeyListener() {
-			@Override
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				doPress(code, event.getAction() == KeyEvent.ACTION_DOWN);
-				return false;
-			}
-		});
-		
 	}
 
 	private void doPress(int code, boolean isDown)
 	{
+		Log.i("Minicraft", "keyevent " + code + " is " + isDown);
 		gameThread.getInputHandler().keyEvent(code, isDown);		
 	}
 	
